@@ -24,14 +24,16 @@ public class CantidadDeLecheVacas{
 				} while(matriz[i][j] <= 0);
 			}
 			
-			matriz[i][8] = matriz[i][1] + matriz[i][2] + matriz[i][3] + matriz[i][4] + matriz[i][5] + matriz[i][6] + matriz[i][7];
-			total = total + matriz[i][8];
-			if(matriz[i][8] > mayor) {
-				mayor = matriz[i][8];
+			matriz[j][8]=matriz[j][8]+matriz[i][j];
+            
+            
+           		if(aux<matriz[j][i]){
+               			aux=matriz[j][i];
+               			matriz[i][9]=i;
 			}	
 		}
 		
-      System.out.println();
+      		System.out.println();
 		System.out.println("Total de produccion: " + total + " l");
 		for(int i = 1; i <= n; i++) {
 			System.out.println("Prod. V " + i + " = " + matriz[i][8] + " l");
