@@ -1,50 +1,56 @@
-//Carlos Rios Caro
+/*Carlos Rios Caro
+
+En una hacienda hay un hato que se compone de N vacas. Diseñe un algoritmo que
+guarde en una matriz de dimensión 7xN la producción de leche diaria (en litros) de
+cada una de las vacas, durante una semana. 
+
+Además, el algoritmo debe calcular la
+producción total del hato en cada uno de los siete días, y el número de la vaca que dio
+más leche en cada día.*/
 
 import java.util.*;
 
 public class CantidadDeLecheVacas{
-	public static void main(String[] args){
+   public static void main(String[] args){
    
-		int[][] matriz = new int[100][100];
-		int n, total = 0, mayor = 0,aux = 0;
+      int[][] matriz = new int[100][100];
+      int n, total = 0, mayor = 0;
       Scanner sc=new Scanner(System.in);
       
-		do {
-			System.out.print("Cantidad de vacas:");
-			n = sc.nextInt();
-		} while(n <= 0);
-		
-		for(int i = 1; i <= n; i++) {
+      do {
+         System.out.print("Cantidad de vacas:");
+         n = sc.nextInt();
+      } while(n <= 0);
+   	
+      for(int i = 1; i <= n; i++){
          System.out.println();
-			System.out.println("Vaca " + i + " ");
-			for(int j = 1; j <= 7; j++) {
-				do {
-					System.out.print("Dia " + j + " : ");
-					matriz[i][j] = sc.nextInt();
-				} while(matriz[i][j] <= 0);
-            
+         System.out.println("       Vaca " + i + " ");
+         
+         for(int j = 1; j <= 7; j++){
+            do {
+               System.out.print("Dia " + j + ": ");
+               matriz[i][j] = sc.nextInt();
+            } while(matriz[i][j] <= 0);          
             
             matriz[j][8]=matriz[j][8]+matriz[i][j];
-            
-            
-            if(aux<matriz[j][i]){
-               aux=matriz[j][i];
-               matriz[i][9]=i;
+         }
+      }
+      for(int j = 1; j <= 7; j++){
+         int aux = 0;
+         for(int i = 1; i <= n; i++){
+            if(aux<matriz[i][j]){
+               aux=matriz[i][j];
+               matriz[j][9]=i;
             }
-			}
-			
-			
-         
-         
-		}
-      
+         }
+      }
+   	      
       System.out.println();
-      System.out.println("Produccion Total x Dia");
-		for(int i = 1; i <= 7; i++) {
+      System.out.println("          Produccion Total");
+      System.out.println("Dia                                  Vaca");
+      for(int i = 1; i <= 7; i++) {
          
-			System.out.println("Dia "+i+": "+matriz[i][8]+" Litros + Mayor Producion de la vaca# "+matriz[i][9]);
-		}
-      
-		
-	}
+         System.out.println(i+": "+matriz[i][8]+" Litros                          #: "+matriz[i][9]);
+      }
+   }
 }
