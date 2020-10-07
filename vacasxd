@@ -1,12 +1,12 @@
 //Carlos Rios Caro
 
-import java.util.Scanner;
+import java.util.*;
 
 public class CantidadDeLecheVacas{
 	public static void main(String[] args){
    
 		int[][] matriz = new int[100][100];
-		int n, total = 0, mayor = 0;
+		int n, total = 0, mayor = 0,aux = 0;
       Scanner sc=new Scanner(System.in);
       
 		do {
@@ -15,28 +15,36 @@ public class CantidadDeLecheVacas{
 		} while(n <= 0);
 		
 		for(int i = 1; i <= n; i++) {
-         		System.out.println();
+         System.out.println();
 			System.out.println("Vaca " + i + " ");
 			for(int j = 1; j <= 7; j++) {
 				do {
 					System.out.print("Dia " + j + " : ");
 					matriz[i][j] = sc.nextInt();
 				} while(matriz[i][j] <= 0);
+            
+            
+            matriz[j][8]=matriz[j][8]+matriz[i][j];
+            
+            
+            if(aux<matriz[j][i]){
+               aux=matriz[j][i];
+               matriz[i][9]=i;
+            }
 			}
 			
-			matriz[j][8]=matriz[j][8]+matriz[i][j];
-            
-            
-           		if(aux<matriz[j][i]){
-               			aux=matriz[j][i];
-               			matriz[i][9]=i;
-			}	
+			
+         
+         
 		}
+      
+      System.out.println();
+      System.out.println("Produccion Total x Dia");
+		for(int i = 1; i <= 7; i++) {
+         
+			System.out.println("Dia "+i+": "+matriz[i][8]+" Litros + Mayor Producion de la vaca# "+matriz[i][9]);
+		}
+      
 		
-      		System.out.println();
-		System.out.println("Total de produccion: " + total + " l");
-		for(int i = 1; i <= n; i++) {
-			System.out.println("Prod. V " + i + " = " + matriz[i][8] + " l");
-		}
 	}
 }
