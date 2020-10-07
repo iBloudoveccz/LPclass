@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class CantidadDeLecheVacas{
 	public static void main(String[] args){
    
-		int[][] matriz = new int[100][10];
+		int[][] matriz = new int[100][100];
 		int n, total = 0, mayor = 0;
       Scanner sc=new Scanner(System.in);
       
