@@ -3,7 +3,7 @@ package demo;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class DemoTranslation {
+public class vacas {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		int[][] mat = new int[7][50];
 		int n, total = 0, mayor = 0;
