@@ -1,0 +1,38 @@
+package demo;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class DemoTranslation {
+	public static void main(String[] args) throws IOException, InterruptedException {
+		int[][] mat = new int[7][50];
+		int n, total = 0, mayor = 0;
+		do {
+			System.out.print("Cantidad de vacas:");
+			n = STDIN_SCANNER.nextInt();
+		} while(n <= 0);
+		new ProcessBuilder("cls").inheritIO().start().waitFor();
+		for(int i = 1; i <= n; i++) {
+			System.out.println("Vaca #" + i + " ");
+			for(int j = 1; j <= 7; j++) {
+				do {
+					System.out.println("Cantidad de leche en el dia #" + j + " ");
+					mat[i][j] = STDIN_SCANNER.nextInt();
+				} while(mat[i][j] <= 0);
+			}
+			mat[i][8] = mat[i][1] + mat[i][2] + mat[i][3] + mat[i][4] + mat[i][5] + mat[i][6] + mat[i][7];
+			total = total + mat[i][8];
+			if(mat[i][8] > mayor) {
+				mayor = mat[i][8];
+			}
+			new ProcessBuilder("cls").inheritIO().start().waitFor();
+		}
+		System.out.println("Total de produccion: " + total + " lts ");
+		for(int i = 1; i <= n; i++) {
+			System.out.println("Vaca #" + i + " = " + mat[i][8] + " lts ");
+		}
+		new ProcessBuilder("PAUSE").inheritIO().start().waitFor();
+	}
+
+	public final static Scanner STDIN_SCANNER = new Scanner(System.in);
+}
